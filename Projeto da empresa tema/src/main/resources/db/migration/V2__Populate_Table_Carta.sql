@@ -1,0 +1,11 @@
+INSERT INTO `carta` (`id`, `nome`, `descricao`, `ataque`, `defesa`, `tipo`, `classe`) VALUES
+	(1, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(2, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(3, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(4, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(5, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(6, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(7, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(8, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(9, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas'),
+	(10, 'Bhelpus','criatura sombria que caminha a noite', 3, 1, 'ladino', 'travas');
