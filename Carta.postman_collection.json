@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "5e618f72-8704-412b-b5a8-a9475719da0f",
+		"name": "Carta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buscar todas as cartas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cartas por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todas as cartas por ordem crescente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1?page=0&limit=3&direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Todas as cartas por ordem decrecente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1?page=0&limit=3&direction=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "direction",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cartas por nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1/findCartaByName/cassandra?page=0&limit=3&direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1",
+						"findCartaByName",
+						"cassandra"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cartas por tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1/findCartaByTipo/mago?page=0&limit=3&direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1",
+						"findCartaByTipo",
+						"mago"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar cartas por classe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1/findCartaByClasse/floresta?page=0&limit=3&direction=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1",
+						"findCartaByClasse",
+						"floresta"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "direction",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar carta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"Nome\": \"lide\",\r\n        \"Descricao\": \"poderoso feiticeira\",\r\n        \"Ataque\": 3,\r\n        \"Defesa\": 6,\r\n        \"Tipo\": \"arcana\",\r\n        \"Classe\": \"luz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar carta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n                \"Indentificador\": 12,\r\n                \"Nome\": \"lide\",\r\n                \"Descricao\": \"poderoso feiticeira\",\r\n                \"Ataque\": 6,\r\n                \"Defesa\": 6,\r\n                \"Tipo\": \"arcana\",\r\n                \"Classe\": \"luz\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar carta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carta/v1/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carta",
+						"v1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
