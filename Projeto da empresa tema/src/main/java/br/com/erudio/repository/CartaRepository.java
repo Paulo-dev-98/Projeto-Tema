@@ -17,5 +17,8 @@ public interface CartaRepository extends JpaRepository<Carta, Long>{
 	
 	@Query("SELECT c FROM Carta c WHERE c.tipo LIKE LOWER(CONCAT ('%', :tipo, '%'))")
 	Page<Carta> findCartaByTipo(@Param("tipo") String tipo, Pageable pageable);
+	
+	@Query("SELECT c FROM Carta c WHERE c.classe LIKE LOWER(CONCAT ('%', :classe, '%'))")
+	Page<Carta> findCartaByClasse(@Param("classe") String classe, Pageable pageable);
 
 }

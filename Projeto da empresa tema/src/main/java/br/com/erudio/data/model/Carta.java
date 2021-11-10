@@ -35,7 +35,7 @@ public class Carta implements Serializable {
 	private String tipo;
 
 	@Column
-	private String Classe;
+	private String classe;
 
 	public Carta() {
 		
@@ -90,19 +90,19 @@ public class Carta implements Serializable {
 	}
 
 	public String getClasse() {
-		return Classe;
+		return classe;
 	}
 
 	public void setClasse(String classe) {
-		Classe = classe;
+		this.classe = classe;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Classe == null) ? 0 : Classe.hashCode());
 		result = prime * result + ataque;
+		result = prime * result + ((classe == null) ? 0 : classe.hashCode());
 		result = prime * result + defesa;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -120,12 +120,12 @@ public class Carta implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Carta other = (Carta) obj;
-		if (Classe == null) {
-			if (other.Classe != null)
-				return false;
-		} else if (!Classe.equals(other.Classe))
-			return false;
 		if (ataque != other.ataque)
+			return false;
+		if (classe == null) {
+			if (other.classe != null)
+				return false;
+		} else if (!classe.equals(other.classe))
 			return false;
 		if (defesa != other.defesa)
 			return false;
@@ -152,5 +152,4 @@ public class Carta implements Serializable {
 		return true;
 	}
 
-	
 }

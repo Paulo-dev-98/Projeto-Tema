@@ -90,7 +90,25 @@ public class CartaController {
 		.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
 		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
 	}
-
+	
+	@ApiOperation(value = "busca todas as cartas filtrando por classe")
+	@GetMapping(value = "/findCartaByClasse/{classe}",produces = { "application/json", "application/xml", "application/x-yaml" })
+	public ResponseEntity<PagedResources<CartaVO>> findCartaByClasse(
+			@PathVariable("classe") String classe,
+			@RequestParam(value="page", defaultValue = "0") int page,
+			@RequestParam(value="limit", defaultValue = "5") int limit,
+			@RequestParam(value="direction", defaultValue = "asc") String direction,
+			PagedResourcesAssembler assembler) {
+		
+		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection,"classe"));
+		
+		Page<CartaVO> cartas = service.findCartaByClasse(classe, pageable);
+		cartas.stream()
+		.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
+		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
+	}
+	
 	@ApiOperation(value = "busca cartas por id")
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
 	public CartaVO findById(@PathVariable("id") Long id) {
