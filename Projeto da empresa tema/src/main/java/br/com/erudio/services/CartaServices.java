@@ -1,8 +1,7 @@
 package br.com.erudio.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +26,13 @@ public class CartaServices {
 		return vo;
 	}
 	
-	public List<CartaVO> findAll(Pageable pageable) {
-		var entities = repository.findAll(pageable).getContent();
-		return DozerConverter.parseListObjects(entities, CartaVO.class) ;
+	public Page<CartaVO> findAll(Pageable pageable) {
+		var page = repository.findAll(pageable);
+		return page.map(this::convertToCartaVO) ;
+	}
+	
+	private CartaVO convertToCartaVO(Carta entity) {
+		return DozerConverter.parseObject(entity,CartaVO.class);
 	}
 	
 	public CartaVO findById(Long id) {
