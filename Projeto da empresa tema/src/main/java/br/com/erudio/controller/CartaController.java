@@ -53,6 +53,24 @@ public class CartaController {
 				.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
 		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
 	}
+	
+	@ApiOperation(value = "busca todas as cartas")
+	@GetMapping(value = "/findCartaByName/{nome}",produces = { "application/json", "application/xml", "application/x-yaml" })
+	public ResponseEntity<PagedResources<CartaVO>> findCartaByName(
+			@PathVariable("nome") String nome,
+			@RequestParam(value="page", defaultValue = "0") int page,
+			@RequestParam(value="limit", defaultValue = "5") int limit,
+			@RequestParam(value="direction", defaultValue = "asc") String direction,
+			PagedResourcesAssembler assembler) {
+		
+		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection,"nome"));
+		
+		Page<CartaVO> cartas = service.findCartaByName(nome, pageable);
+		cartas.stream()
+		.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
+		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
+	}
 
 //	@CrossOrigin(origins = "http://localhost:8080") habilitando o cors
 	@ApiOperation(value = "busca cartas por id")

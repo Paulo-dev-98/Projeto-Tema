@@ -31,6 +31,11 @@ public class CartaServices {
 		return page.map(this::convertToCartaVO) ;
 	}
 	
+	public Page<CartaVO> findCartaByName(String nome, Pageable pageable) {
+		var page = repository.findCartaByName(nome, pageable);
+		return page.map(this::convertToCartaVO) ;
+	}
+	
 	private CartaVO convertToCartaVO(Carta entity) {
 		return DozerConverter.parseObject(entity,CartaVO.class);
 	}
