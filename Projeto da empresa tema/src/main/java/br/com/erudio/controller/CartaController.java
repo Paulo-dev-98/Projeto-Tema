@@ -32,6 +32,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "EndpointCarta")
 @RestController
 @RequestMapping("/api/carta/v1")
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class CartaController {
 
 	@Autowired
@@ -90,7 +91,6 @@ public class CartaController {
 		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
 	}
 
-//	@CrossOrigin(origins = "http://localhost:8080") habilitando o cors
 	@ApiOperation(value = "busca cartas por id")
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
 	public CartaVO findById(@PathVariable("id") Long id) {
