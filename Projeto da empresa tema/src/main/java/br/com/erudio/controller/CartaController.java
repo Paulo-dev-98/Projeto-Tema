@@ -54,7 +54,7 @@ public class CartaController {
 		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "busca todas as cartas")
+	@ApiOperation(value = "busca todas as cartas filtrando por nome")
 	@GetMapping(value = "/findCartaByName/{nome}",produces = { "application/json", "application/xml", "application/x-yaml" })
 	public ResponseEntity<PagedResources<CartaVO>> findCartaByName(
 			@PathVariable("nome") String nome,
@@ -67,6 +67,24 @@ public class CartaController {
 		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection,"nome"));
 		
 		Page<CartaVO> cartas = service.findCartaByName(nome, pageable);
+		cartas.stream()
+		.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
+		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "busca todas as cartas filtrando por tipo")
+	@GetMapping(value = "/findCartaByTipo/{tipo}",produces = { "application/json", "application/xml", "application/x-yaml" })
+	public ResponseEntity<PagedResources<CartaVO>> findCartaByTipo(
+			@PathVariable("tipo") String tipo,
+			@RequestParam(value="page", defaultValue = "0") int page,
+			@RequestParam(value="limit", defaultValue = "5") int limit,
+			@RequestParam(value="direction", defaultValue = "asc") String direction,
+			PagedResourcesAssembler assembler) {
+		
+		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection,"tipo"));
+		
+		Page<CartaVO> cartas = service.findCartaByTipo(tipo, pageable);
 		cartas.stream()
 		.forEach(p -> p.add(linkTo(methodOn(CartaController.class).findById(p.getKey())).withSelfRel()));
 		return new ResponseEntity<> (assembler.toResource(cartas), HttpStatus.OK);
