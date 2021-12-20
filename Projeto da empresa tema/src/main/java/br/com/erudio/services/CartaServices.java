@@ -32,7 +32,7 @@ public class CartaServices {
 	}
 	
 	public Page<CartaVO> findCartaByName(String nome, Pageable pageable) {
-		var page = repository.findCartaByName(nome, pageable);
+		var page = repository.findCartaByNome(nome, pageable);
 		return page.map(this::convertToCartaVO) ;
 	}
 	

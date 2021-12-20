@@ -13,7 +13,7 @@ import br.com.erudio.data.model.Carta;
 public interface CartaRepository extends JpaRepository<Carta, Long>{
 	
 	@Query("SELECT c FROM Carta c WHERE c.nome LIKE LOWER(CONCAT ('%', :nome, '%'))")
-	Page<Carta> findCartaByName(@Param("nome") String nome, Pageable pageable);
+	Page<Carta> findCartaByNome(@Param("nome") String nome, Pageable pageable);
 	
 	@Query("SELECT c FROM Carta c WHERE c.tipo LIKE LOWER(CONCAT ('%', :tipo, '%'))")
 	Page<Carta> findCartaByTipo(@Param("tipo") String tipo, Pageable pageable);
